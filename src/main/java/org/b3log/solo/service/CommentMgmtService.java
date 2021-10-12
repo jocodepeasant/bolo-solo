@@ -80,7 +80,7 @@ public class CommentMgmtService {
     /**
      * Maximum length of comment content.
      */
-    private static final int MAX_COMMENT_CONTENT_LENGTH = 500;
+    private static final int MAX_COMMENT_CONTENT_LENGTH = 500000;
 
     /**
      * Event manager.
