@@ -18,7 +18,6 @@ if [ $? -eq 0 ]; then
     echo "暂停并删除旧容器及镜像"
     docker stop $name
     docker rm $name
-    rm /dev/null
 fi
 
 echo "开始构建 docker 容器"
