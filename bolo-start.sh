@@ -3,7 +3,7 @@ set -x
 set +e
 name=bolo
 work_dir=/tmp/bolo-build
-if [ ! -d $work_dir ]; then
+if [ -d $work_dir ]; then
   rm -rf $work_dir
 fi
 mkdir -p $work_dir
