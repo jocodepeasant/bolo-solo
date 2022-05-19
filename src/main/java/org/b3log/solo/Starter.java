@@ -137,6 +137,10 @@ public final class Starter {
             System.exit(-1);
         }
 
+        String contextPath = commandLine.getOptionValue("contextPath");
+        if (null != contextPath) {
+            Latkes.setLatkeProperty("contextPath", contextPath);
+        }
         String serverScheme = commandLine.getOptionValue("server_scheme");
         if (null != serverScheme) {
             Latkes.setLatkeProperty("serverScheme", serverScheme);

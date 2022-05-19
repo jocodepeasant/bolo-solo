@@ -2,12 +2,14 @@
 set -x
 set +e
 name=bolo
-if [ ! -d "/tmp" ]; then
-    mkdir /tmp
+work_dir=/tmp/bolo-build
+if [ ! -d $work_dir ]; then
+  rm -rf $work_dir
 fi
+mkdir -p $work_dir
 
 echo "开始拉取最新代码"
-cd /tmp \
+cd $work_dir \
 && git clone https://github.com/jocodepeasant/bolo-solo.git \
 
 #判断容器是否存在，存在则删除
@@ -30,3 +32,6 @@ docker run -it --name $name -d -p8080:8080 --env RUNTIME_DB="MYSQL" \
 --env JDBC_DRIVER="com.mysql.cj.jdbc.Driver" \
 --env JDBC_URL="jdbc:mysql://116.205.172.86:3306/solo?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC" \
 bolo --listen_port=8080 --server_scheme=https --server_host=www.smartling.top
+
+echo "删除临时文件夹"
+rm -rf $work_dir
